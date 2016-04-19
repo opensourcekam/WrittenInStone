@@ -16,6 +16,9 @@ var Speaker = React.createClass({
                       <p>started {this.props.started}</p>
                       <JoinSpeaker emit={this.props.emit}/>
                     </Display>
+                    <Display if={this.props.started === 1 && this.props.member.type === 'member'}>
+                      <h3>Polling will start soon!</h3>
+                    </Display>
                 </Display>
               </div>
               );

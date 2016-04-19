@@ -9081,6 +9081,15 @@
 	            this.props.started
 	          ),
 	          React.createElement(JoinSpeaker, { emit: this.props.emit })
+	        ),
+	        React.createElement(
+	          Display,
+	          { 'if': this.props.started === 1 && this.props.member.type === 'member' },
+	          React.createElement(
+	            'h3',
+	            null,
+	            'Polling will start soon!'
+	          )
 	        )
 	      )
 	    );
