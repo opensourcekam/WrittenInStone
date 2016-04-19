@@ -9068,7 +9068,7 @@
 	        ),
 	        React.createElement(
 	          Display,
-	          { 'if': this.props.started === 0 },
+	          { 'if': this.props.started === 0 && this.props.member.type != 'member' },
 	          React.createElement(
 	            'h2',
 	            null,
@@ -25804,8 +25804,7 @@
 	    };
 	  },
 	  componentWillMount: function componentWillMount() {
-	    this.socket = io('https://writteninstone.herokuapp.com');
-	    this.socket = io('http://writteninstone.herokuapp.com');
+	    this.socket = io('https://writteninstone.herokuapp.com/#/');
 	    this.socket.on('connect', this.connect);
 	    this.socket.on('disconnect', this.disconnect);
 	    this.socket.on('welcome', this.updateState);
