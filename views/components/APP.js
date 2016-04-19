@@ -6,6 +6,7 @@ var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 //App
 var APP = React.createClass({
+  
     getInitialState() {
         return {
             status: 'disconnected',
