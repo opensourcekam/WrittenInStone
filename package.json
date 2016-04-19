@@ -5,7 +5,7 @@
   "scripts": {
     "build": "babel ./public/javascripts -d bundle",
     "prestart": "webpack",
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
   },
   "babel": {
     "presets": [
