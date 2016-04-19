@@ -19,11 +19,8 @@ var APP = React.createClass({
     },
 
     componentWillMount() {
-<<<<<<< HEAD
         this.socket = io('https://writteninstone.herokuapp.com');
-=======
         this.socket = io('http://writteninstone.herokuapp.com');
->>>>>>> 1162486973bd32c43545df34fc4b4f7a5a99cc56
         this.socket.on('connect', this.connect);
         this.socket.on('disconnect', this.disconnect);
         this.socket.on('welcome', this.updateState);
