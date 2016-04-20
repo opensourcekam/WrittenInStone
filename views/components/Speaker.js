@@ -2,6 +2,7 @@ var React = require('react');
 var Link = require('react-router').Link;
 var Display = require('./parts/Display');
 var JoinSpeaker = require('./parts/JoinSpeaker');
+var Attendance = require('./parts/Attendance');
 
 var Speaker = React.createClass({
     render() {
@@ -13,7 +14,7 @@ var Speaker = React.createClass({
 
                     <Display if={this.props.member.name && this.props.member.type === 'speaker'}>
                       <p>Questions</p>
-                      <p>Attendance</p>
+                      <Attendance audience={this.props.audience}/>
                     </Display>
 
                     {/*this display show if the show hasnt started and youre not a member already*/}

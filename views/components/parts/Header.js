@@ -15,10 +15,8 @@ var Header = React.createClass({
     render() {
         return ( <header className="row">
                     <div className="col-xs-10">
-                      <h1>
-                        {this.props.title}
-                      </h1>
-                      <p>{this.props.speaker}</p>
+                      <h1>Today's Question - {this.props.title}</h1>
+                      <p>By - {this.props.speaker}</p>
                       <nav >
                         <ul className="nav nav-pills">
                           <li>
