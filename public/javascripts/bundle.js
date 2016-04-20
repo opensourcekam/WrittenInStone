@@ -7065,7 +7065,7 @@
 	 * nested.
 	 *
 	 *   import { Route, createRoutesFromReactChildren } from 'react-router'
-	 *   
+	 *
 	 *   const routes = createRoutesFromReactChildren(
 	 *     <Route component={App}>
 	 *       <Route path="home" component={Dashboard}/>
@@ -9040,6 +9040,7 @@
 	'use strict';
 
 	var React = __webpack_require__(24);
+	var Link = __webpack_require__(1).Link;
 	var Display = __webpack_require__(90);
 	var JoinSpeaker = __webpack_require__(94);
 
@@ -9089,6 +9090,20 @@
 	            'h3',
 	            null,
 	            'Polling will start soon!'
+	          )
+	        ),
+	        React.createElement(
+	          Display,
+	          { 'if': this.props.started === 1 && !this.props.member.type },
+	          React.createElement(
+	            'h3',
+	            null,
+	            'Join as a member to answer some questions!'
+	          ),
+	          React.createElement(
+	            Link,
+	            { to: '/' },
+	            'Join as member'
 	          )
 	        )
 	      )
@@ -20741,7 +20756,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @typechecks
-	 * 
+	 *
 	 */
 
 	/*eslint-disable no-self-compare */
@@ -25882,7 +25897,7 @@
 /* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * Module dependencies.
 	 */
@@ -26108,7 +26123,7 @@
 /* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * This is the web browser implementation of `debug()`.
 	 *
@@ -26282,7 +26297,7 @@
 /* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * This is the common logic for both the Node.js and web browser
 	 * implementations of `debug()`.
@@ -26616,7 +26631,7 @@
 /* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * Module dependencies.
 	 */
@@ -27022,7 +27037,7 @@
 /* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * This is the web browser implementation of `debug()`.
 	 *
@@ -27196,7 +27211,7 @@
 /* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * This is the common logic for both the Node.js and web browser
 	 * implementations of `debug()`.
@@ -28341,7 +28356,7 @@
 /* 247 */
 /***/ function(module, exports) {
 
-	
+
 	/**
 	 * Expose `Emitter`.
 	 */
@@ -28679,7 +28694,7 @@
 /* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * Module dependencies.
 	 */
@@ -29242,7 +29257,7 @@
 /* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	module.exports =  __webpack_require__(252);
 
 
@@ -29250,7 +29265,7 @@
 /* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	module.exports = __webpack_require__(253);
 
 	/**
@@ -30103,7 +30118,7 @@
 /* 256 */
 /***/ function(module, exports) {
 
-	
+
 	/**
 	 * Module exports.
 	 *
@@ -31560,7 +31575,7 @@
 /* 261 */
 /***/ function(module, exports) {
 
-	
+
 	/**
 	 * Gets the keys for an object.
 	 *
@@ -32188,7 +32203,7 @@
 /* 270 */
 /***/ function(module, exports) {
 
-	
+
 	module.exports = function(a, b){
 	  var fn = function(){};
 	  fn.prototype = b.prototype;
@@ -32274,7 +32289,7 @@
 /* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * This is the web browser implementation of `debug()`.
 	 *
@@ -32448,7 +32463,7 @@
 /* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * This is the common logic for both the Node.js and web browser
 	 * implementations of `debug()`.
@@ -32794,7 +32809,7 @@
 	  this.script = script;
 
 	  var isUAgecko = 'undefined' != typeof navigator && /gecko/i.test(navigator.userAgent);
-	  
+
 	  if (isUAgecko) {
 	    setTimeout(function () {
 	      var iframe = document.createElement('iframe');
@@ -33197,7 +33212,7 @@
 /* 277 */
 /***/ function(module, exports) {
 
-	
+
 	var indexOf = [].indexOf;
 
 	module.exports = function(arr, obj){
@@ -33250,7 +33265,7 @@
 /* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * Module dependencies.
 	 */
@@ -33668,7 +33683,7 @@
 /* 280 */
 /***/ function(module, exports) {
 
-	
+
 	/**
 	 * Expose `Emitter`.
 	 */
@@ -33854,7 +33869,7 @@
 /* 282 */
 /***/ function(module, exports) {
 
-	
+
 	/**
 	 * Module exports.
 	 */
@@ -33988,7 +34003,7 @@
 /* 286 */
 /***/ function(module, exports) {
 
-	
+
 	/**
 	 * Expose `Backoff`.
 	 */
