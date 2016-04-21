@@ -21,9 +21,9 @@ var APP = React.createClass({
 
     componentWillMount() {
         // for dev
-        this.socket = io('http://localhost:3000');
+        // this.socket = io('http://localhost:3000');
         // for production
-        // this.socket = io('https://writteninstone.herokuapp.com/#/');
+        this.socket = io('https://writteninstone.herokuapp.com/#/');
         this.socket.on('connect', this.connect);
         this.socket.on('disconnect', this.disconnect);
         this.socket.on('welcome', this.updateState);
