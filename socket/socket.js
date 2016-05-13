@@ -1,7 +1,9 @@
 var _ = require('underscore');
 
-module.exports = function(io, connections, title, audience, speaker, started) {
+// ALL VARS HERE ARE PASSED INTO THIS SOCKET.JS MODULE WITH THE bin/www file
+module.exports = function(io, connections, title, audience, opinions, speaker, started) {
     // console.log('in connection');
+    console.log(typeof audience);
     io.on("connection", function(socket) {
 
         // disconnect func is called once user disconnect event occurs
@@ -45,8 +47,25 @@ module.exports = function(io, connections, title, audience, speaker, started) {
 
           audience.push(newMember);
           io.sockets.emit('audience', audience);
+          console.log('audience 2=> ', audience);
           console.log("Joined %s", payload.name );
+          console.log('CUR audience', require('util').inspect(audience, { depth: null }));
         });
+
+        socket.on('chat', function(payload){
+          // get the id of member, timestamp, and message
+          var date = new Date()
+
+          var chat = {
+            id: this.id,
+            timestamp: date.getTime(),
+            chat: payload.chat
+          }
+
+          opinions.push(chat)
+          io.sockets.emit('chat', opinions);
+          console.log(chat);
+        })
 
         // Start presentation
         socket.on('start', function (payload) {
@@ -71,9 +90,11 @@ module.exports = function(io, connections, title, audience, speaker, started) {
         //   console.log('welcome');
         //   io.sockets.emit('start', {title:title, audience: audience, speaker:speaker.name, started: started});
         // })
+
         socket.emit('welcome', {
           title: title,
           audience: audience,
+          opinions: opinions,
           speaker: speaker.name,
           started: started
         });

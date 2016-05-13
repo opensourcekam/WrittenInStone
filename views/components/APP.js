@@ -15,20 +15,22 @@ var APP = React.createClass({
             emit: this.emit,
             member: {},
             audience: [],
+            opinions: [],
             speaker: ''
         }
     },
 
     componentWillMount() {
         // for dev
-        // this.socket = io('http://localhost:3000');
+        this.socket = io('http://localhost:3000');
         // for production
-        this.socket = io('https://writteninstone.herokuapp.com/#/');
+        // this.socket = io('https://writteninstone.herokuapp.com/#/');
         this.socket.on('connect', this.connect);
         this.socket.on('disconnect', this.disconnect);
         this.socket.on('welcome', this.updateState);
         this.socket.on('joined', this.joined);
         this.socket.on('audience', this.updateAudience);
+        this.socket.on('chat', this.updateBoard);
         this.socket.on('start', this.start);
         this.socket.on('end', this.updateState);
     },
@@ -41,7 +43,6 @@ var APP = React.createClass({
 
         var member = (sessionStorage.member) ? JSON.parse(sessionStorage.member) : null;
 
-        console.log(member);
         if(member && member.type === 'member'){
           this.emit('join', member);
           console.log(member);
@@ -66,8 +67,8 @@ var APP = React.createClass({
     },
 
     updateState(serverState){
-      console.dir(serverState);
-      console.log('updating state ^');
+      console.log('updateState => ()');
+      console.log(serverState);
       this.setState(serverState);
     },
 
@@ -78,6 +79,12 @@ var APP = React.createClass({
 
     updateAudience(newAudience){
       this.setState({audience: newAudience})
+    },
+
+    updateBoard(newChat){
+      console.log('Got a new chat');
+      console.log(newChat);
+      this.setState({opinions: newChat})
     },
 
     start(presentation){

@@ -26,12 +26,13 @@ var server = http.createServer(app);
 ********************/
 var connections = [],
     audience = [],
+    opinions = [],
     speaker = {},
     title = 'Untitled unmastered',
     started = 0;
 
 var io = require('socket.io').listen(server);
-require('../socket/socket.js')(io, connections, title, audience, speaker, started);
+require('../socket/socket.js')(io, connections, title, audience, opinions, speaker, started);
 
 /********************
 **  end socket.io  **
