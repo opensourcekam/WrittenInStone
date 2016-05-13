@@ -2,6 +2,22 @@ var React = require('react');
 //Header
 var Header = React.createClass({
 
+    // getInitialState: function() {
+    //   return {timeLeft: this.state.timeLeft};
+    // },
+    //
+    // componentDidMount: function() {
+    //   this.interval = setInterval(this.tick, 1000);
+    // },
+    //
+    // componentWillUnmount: function() {
+    //   clearInterval(this.interval);
+    // },
+    //
+    // tick: function() {
+    //   this.setState({timeLeft: this.state.timeLeft});
+    // },
+
     propTypes: {
         title: React.PropTypes.string.isRequired
     },
@@ -15,8 +31,10 @@ var Header = React.createClass({
     render() {
         return ( <header className="row">
                     <div className="col-xs-10">
-                      <h1>Today's Question - {this.props.title}</h1>
-                      <p>By - {this.props.speaker}</p>
+                      <h1>{this.props.title}</h1>
+                      <h3><strong>{(((this.props.timeLeft / (1000*60*60)) % 24)).toFixed(0) }:{ (((this.props.timeLeft / (1000*60)) % 60)).toFixed(0) }:{ (((this.props.timeLeft / (1000)) % 60)).toFixed(0)}</strong>
+                       </h3>
+                      {/*<p>{this.props.speaker}</p>*/}
                       <nav >
                         <ul className="nav nav-pills">
                           <li>

@@ -33,6 +33,7 @@ var APP = React.createClass({
         this.socket.on('chat', this.updateBoard);
         this.socket.on('start', this.start);
         this.socket.on('end', this.updateState);
+        this.socket.on('timer', this.updateTimer)
     },
 
     emit(eventName, payload){
@@ -40,7 +41,6 @@ var APP = React.createClass({
     },
 
     connect(socket) {
-
         var member = (sessionStorage.member) ? JSON.parse(sessionStorage.member) : null;
 
         if(member && member.type === 'member'){
@@ -87,6 +87,10 @@ var APP = React.createClass({
       this.setState({opinions: newChat})
     },
 
+    updateTimer(e){
+      this.setState(e)
+    },
+
     start(presentation){
       console.log('Its starting');
       console.log(presentation);
@@ -100,7 +104,7 @@ var APP = React.createClass({
         return (
           <div>
             <div>
-              <Header {...this.state}/>
+              <Header {...this.state} />
             </div>
             {/*github.com/reactjs/react-router-tutorial/tree/master/lessons/04-nested-routes*/}
             {this.props.children, React.cloneElement(this.props.children, this.state)}

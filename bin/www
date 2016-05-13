@@ -31,8 +31,24 @@ var connections = [],
     title = 'Untitled unmastered',
     started = 0;
 
+// this function will clear the entire opinions array all at once, once a day.
+var _24Hours = 8.64 * Math.pow(10, 7),
+    oneMillisecond = 1000;
+
+setInterval(function () {
+    console.log(opinions);
+    while (opinions.length > 0) {
+      opinions.pop()
+    }
+    console.log('done');
+    console.log(opinions);
+}, 8.64 * Math.pow(10, 7));
+
+
+// TIMER HAS STARTED WHEN APP STARTS
+
 var io = require('socket.io').listen(server);
-require('../socket/socket.js')(io, connections, title, audience, opinions, speaker, started);
+require('../socket/socket.js')(io, connections, title, audience, opinions, speaker, started, _24Hours);
 
 /********************
 **  end socket.io  **

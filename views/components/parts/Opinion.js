@@ -16,7 +16,7 @@ var Opinion = React.createClass({
               <table className="table table-striped">
                 <thead>
                 <tr>
-                  <th>chat</th>
+                  <th>Ideas</th>
                 </tr>
                 </thead>
                 <tbody>

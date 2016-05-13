@@ -9489,7 +9489,7 @@
 	            React.createElement(
 	              "th",
 	              null,
-	              "chat"
+	              "Ideas"
 	            )
 	          )
 	        ),
@@ -26360,9 +26360,9 @@
 	  },
 	  componentWillMount: function componentWillMount() {
 	    // for dev
-	    // this.socket = io('http://localhost:3000');
+	    this.socket = io('http://localhost:3000');
 	    // for production
-	    this.socket = io('https://writteninstone.herokuapp.com/#/');
+	    // this.socket = io('https://writteninstone.herokuapp.com/#/');
 	    this.socket.on('connect', this.connect);
 	    this.socket.on('disconnect', this.disconnect);
 	    this.socket.on('welcome', this.updateState);
@@ -26371,12 +26371,12 @@
 	    this.socket.on('chat', this.updateBoard);
 	    this.socket.on('start', this.start);
 	    this.socket.on('end', this.updateState);
+	    this.socket.on('timer', this.updateTimer);
 	  },
 	  emit: function emit(eventName, payload) {
 	    this.socket.emit(eventName, payload);
 	  },
 	  connect: function connect(socket) {
-
 	    var member = sessionStorage.member ? JSON.parse(sessionStorage.member) : null;
 
 	    if (member && member.type === 'member') {
@@ -26416,6 +26416,9 @@
 	    console.log('Got a new chat');
 	    console.log(newChat);
 	    this.setState({ opinions: newChat });
+	  },
+	  updateTimer: function updateTimer(e) {
+	    this.setState(e);
 	  },
 	  start: function start(presentation) {
 	    console.log('Its starting');
@@ -34066,6 +34069,22 @@
 	  displayName: 'Header',
 
 
+	  // getInitialState: function() {
+	  //   return {timeLeft: this.state.timeLeft};
+	  // },
+	  //
+	  // componentDidMount: function() {
+	  //   this.interval = setInterval(this.tick, 1000);
+	  // },
+	  //
+	  // componentWillUnmount: function() {
+	  //   clearInterval(this.interval);
+	  // },
+	  //
+	  // tick: function() {
+	  //   this.setState({timeLeft: this.state.timeLeft});
+	  // },
+
 	  propTypes: {
 	    title: React.PropTypes.string.isRequired
 	  },
@@ -34085,14 +34104,20 @@
 	        React.createElement(
 	          'h1',
 	          null,
-	          'Today\'s Question - ',
 	          this.props.title
 	        ),
 	        React.createElement(
-	          'p',
+	          'h3',
 	          null,
-	          'By - ',
-	          this.props.speaker
+	          React.createElement(
+	            'strong',
+	            null,
+	            (this.props.timeLeft / (1000 * 60 * 60) % 24).toFixed(0),
+	            ':',
+	            (this.props.timeLeft / (1000 * 60) % 60).toFixed(0),
+	            ':',
+	            (this.props.timeLeft / 1000 % 60).toFixed(0)
+	          )
 	        ),
 	        React.createElement(
 	          'nav',
